@@ -1,0 +1,90 @@
+<header class="header-content header">
+  <div class="logo-content">
+      <img src="../../../assets/logo.png" alt="Logo">
+      <div>
+          <span class="person-text">ADDRESS</span><br>
+          <span class="person-text address-book">BOOK</span>
+      </div>
+  </div>
+</header>
+<div class="form-content">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-head">
+        <div class="form-head-text">Person Address Form</div>
+        <!-- <a onclick="returnToHome()"><img class="cancel-img" src="../assets/images/cancel.jpeg" alt="cancel"></a> -->
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+        <div fxLayoutGap="10px">
+          <label for="name">First Name</label>
+          <mat-form-field  at-form-field  appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" fx formControlName="firstName">
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <label for="name">Last Name</label>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="row-wrap" fxLayoutAlign="space-evenly center">
+        <div fxLayoutGap="10px">
+          <label for="phone">Phone Number</label>
+          <mat-form-field appearance="outline" >
+            <mat-label>Phone Number</mat-label>
+            <input matInput placeholder="Your Phone Number" formControlName="phone">
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <label for="email">Email Address</label>
+          <mat-form-field appearance="outline" >
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email id" formControlName="email">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayoutGap="10px" fxLayoutAlign="center center">
+        <label for="Address"> Address</label>
+        <mat-form-field appearance="outline" fxFlex="70">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Address" formControlName="address">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row-wrap" fxLayoutAlign="space-evenly center">
+        <div fxLayoutGap="10px">
+          <label for="phone">City</label>
+          <mat-form-field appearance="outline" >
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city">
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <label for="email">State</label>
+          <mat-form-field appearance="outline" >
+            <mat-label>State</mat-label>
+            <input matInput placeholder="State" formControlName="state">
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <label for="email">Zip Code</label>
+          <mat-form-field appearance="outline" >
+            <mat-label>Zip Code</mat-label>
+            <input matInput placeholder="Zip Code" formControlName="zip">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="center center" fxLayoutGap="180px">
+        <button type="submit" mat-raised-button color="primary">Add Contact</button>
+        <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+</div>
