@@ -14,4 +14,10 @@ export class ContactServiceService {
   getAllContacts(){
     return this.http.get('all')
   }
+  deleteEmployee(id){
+    return this.http.delete('delete' + id)
+  }
+  updateContact(id, data){
+    return this.http.update('update/' + id, data)
+  }
 }

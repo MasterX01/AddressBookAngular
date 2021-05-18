@@ -11,11 +11,20 @@ import { Router } from '@angular/router';
 })
 export class AddContactComponent implements OnInit {
 
+  citiesAndStates = [
+    {state: 'Delhi', cities: ['Delhi']},
+    {state: 'Rajasthan' ,cities:['Kota', 'Jaipur', 'Jaisalmer', 'Bikaner']},
+    {state: 'Maharashtra', cities: ['Pune', 'Mumbai', 'Nagpur']},
+    {state: 'Uttranchal', cities: ['Badrinath', 'Kedarnath', 'Manali']},
+    {state: 'Punjab', cities: ['Amritsar', 'Chandigarh', 'DEF', 'GHI']}
+  ]
+
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private contactService: ContactServiceService,
-              private router: Router) { }
+              private router: Router) {
+              }
 
   ngOnInit(){
     this.form = this.formBuilder.group({
@@ -28,12 +37,11 @@ export class AddContactComponent implements OnInit {
       state: ['', Validators.required],
       zip: ['', Validators.required],
     })
+    console.log(this.citiesAndStates);
   }
 
   onSubmit(){
-    console.log("Submit working");
-    console.log(this.form.value);
-
+    // console.log(this.form.value);
     if (this.form.valid){
       console.log('form valid');
       const requestObj = {
@@ -48,7 +56,7 @@ export class AddContactComponent implements OnInit {
       };
       this.contactService.addContact(requestObj).subscribe((response) => {
         console.log(response);
-        // this.router.navigateByUrl();
+        this.router.navigateByUrl('home');
       }, (err) => {
         console.log(err);
       });
@@ -59,6 +67,13 @@ export class AddContactComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigateByUrl('home')
+    this.router.navigateByUrl('home');
   }
+
+  cities: any[];
+  setCities(state: any){
+    console.log(state);
+    this.cities = state.cities;
+  }
+
 }

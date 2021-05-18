@@ -1,9 +1,49 @@
 <header class="header-content header">
   <div class="logo-content">
-      <img src="../assets/images/addressbook.jpeg" alt="Logo">
+      <img src="../../../assets/logo.png" alt="Logo">
       <div>
           <span class="person-text">ADDRESS</span><br>
           <span class="person-text address-book">BOOK</span>
       </div>
   </div>
 </header>
+
+<div class="header-content">
+  <div class="emp-detail-text">
+      Contacts From Address Book
+  </div>
+  <a class="add-button" routerLinkActive="active">
+    <img src="../../../assets/add-24px.svg" (click)="addNewContact()" alt="">Add Contact
+  </a>
+</div>
+<div class="table-main">
+  <table id="table-display" class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let contact of contactList">
+      <td>{{contact.firstName}}</td>
+      <td>{{contact.lastName}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.address}}</td>
+      <td>{{contact.state}}</td>
+      <td>{{contact.city}}</td>
+      <td>{{contact.zip}}</td>
+      <td>
+        <img id="{{contact.id}}" (click)="delete(contact.id)"  alt="delete " src="../../../assets/delete-black-18dp.svg">
+        <img id="{{contact.id}}" (click)="update(contact)"  alt="edit" src="../../../assets/create-black-18dp.svg">
+      </td>
+    </tr>
+  </table>
+</div>

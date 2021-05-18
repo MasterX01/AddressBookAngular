@@ -1,3 +1,4 @@
+<!-- <div fxLayout="column" fxFlex="100"> -->
 <header class="header-content header">
   <div class="logo-content">
       <img src="../../../assets/logo.png" alt="Logo">
@@ -7,17 +8,18 @@
       </div>
   </div>
 </header>
-<div class="form-content">
+<div class="form-content" fxLayout.xs="column">
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-head">
         <div class="form-head-text">Person Address Form</div>
-        <!-- <a onclick="returnToHome()"><img class="cancel-img" src="../assets/images/cancel.jpeg" alt="cancel"></a> -->
+        <button (click)="cancel()" mat-button style="font-style: italic;">Cancel</button>
     </div>
-    <div fxLayout="column">
-      <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+
+    <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-evenly" fxLayout.xs="column">
+      <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayout.xs="column">
         <div fxLayoutGap="10px">
           <label for="name">First Name</label>
-          <mat-form-field  at-form-field  appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput placeholder="First Name" fx formControlName="firstName">
           </mat-form-field>
@@ -31,7 +33,7 @@
         </div>
       </div>
 
-      <div fxLayout="row-wrap" fxLayoutAlign="space-evenly center">
+      <div fxLayout="row-wrap" fxLayoutAlign="space-evenly center" fxLayout.xs="column">
         <div fxLayoutGap="10px">
           <label for="phone">Phone Number</label>
           <mat-form-field appearance="outline" >
@@ -48,7 +50,7 @@
         </div>
       </div>
 
-      <div fxLayoutGap="10px" fxLayoutAlign="center center">
+      <div fxLayoutGap="10px" fxLayoutAlign="center center" fxLayout.xs="column">
         <label for="Address"> Address</label>
         <mat-form-field appearance="outline" fxFlex="70">
           <mat-label>Address</mat-label>
@@ -56,19 +58,29 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row-wrap" fxLayoutAlign="space-evenly center">
-        <div fxLayoutGap="10px">
-          <label for="phone">City</label>
-          <mat-form-field appearance="outline" >
-            <mat-label>City</mat-label>
-            <input matInput placeholder="City" formControlName="city">
-          </mat-form-field>
-        </div>
+      <div fxLayout="row-wrap" fxLayoutAlign="center center"  fxLayout.xs="column">
         <div fxLayoutGap="10px">
           <label for="email">State</label>
           <mat-form-field appearance="outline" >
-            <mat-label>State</mat-label>
-            <input matInput placeholder="State" formControlName="state">
+            <!-- <mat-label>State</mat-label>
+            <input matInput placeholder="State" formControlName="state"> -->
+            <mat-select formControlName="state" placeholder="State" (valueChange)="setCities($event)">
+              <mat-option *ngFor="let state of citiesAndStates" [value]="state" >
+                {{state.state}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutGap="10px">
+          <label for="phone">City</label>
+          <mat-form-field appearance="outline" >
+            <!-- <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="city"> -->
+            <mat-select placeholder="City" formControlName="city">
+              <mat-option *ngFor="let city of cities" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div fxLayoutGap="10px">
@@ -82,9 +94,9 @@
 
       <div fxLayoutAlign="center center" fxLayoutGap="180px">
         <button type="submit" mat-raised-button color="primary">Add Contact</button>
-        <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
       </div>
-    </div>
 
+    </div>
   </form>
 </div>
+<!-- </div> -->

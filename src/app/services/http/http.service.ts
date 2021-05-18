@@ -20,4 +20,10 @@ export class HttpService {
   get(url){
     return this.http.get(this.baseUrl+url, this.options)
   }
+  delete(url){
+    return this.http.delete(this.baseUrl+url, this.options)
+  }
+  update(url, data){
+    return this.http.put(this.baseUrl+url, data, this.options)
+  }
 }
